@@ -1,0 +1,28 @@
+.home {
+  display: flex;
+  flex-direction: column; /* keeps text above button */
+  justify-content: center; /* centers vertically */
+  align-items: center; /* centers horizontally */
+  height: 100vh; /* full viewport height */
+  text-align: center;
+}
+
+
+.home h1 {
+  font-size: 3rem;
+  color: #0078ff;
+}
+
+.home button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0078ff;
+  color: white;
+  cursor: pointer;
+}
+
+.home button:hover {
+  background-color: #005fcc;
+}
