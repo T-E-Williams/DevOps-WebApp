@@ -9,7 +9,7 @@ function Home() {
       <h1 className="text-6xl font-bold text-black-600 mb-4">DevOps</h1>
       <button type="submit"
         onClick={() => navigate('/about')}
-        className="px-6 py-2 bg-black-600 text-black bg-gray-600 hover:cursor-pointer focus:bg-gray-700 rounded-lg hover:bg-black-700 transition">
+        className="px-6 py-2 bg-black-600 text-black hover:cursor-pointer rounded-lg hover:bg-black-700 transition">
         Go to About Page
       </button>
     </div>
