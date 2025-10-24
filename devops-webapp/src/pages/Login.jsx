@@ -1,36 +1,32 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("");
 
     try {
       const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
-      if (res.ok && data.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("username", data.username);
+      if (res.ok) {
+        localStorage.setItem("token", data.token); // store JWT
         setMessage("✅ Login successful!");
-        navigate("/"); // redirect to home or dashboard
       } else {
         setMessage(`❌ ${data.error || "Login failed"}`);
       }
     } catch (err) {
-      setMessage("❌ Server error. Please try again later.");
+      setMessage("❌ Network error");
     }
   };
 
@@ -38,39 +34,34 @@ export default function Login() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg p-8 w-full max-w-md"
+        className="bg-white p-6 rounded-2xl shadow-md w-80 space-y-4"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <h1 className="text-2xl font-bold text-center">Login</h1>
 
         <input
-          type="email"
           name="email"
           placeholder="Email"
-          value={form.email}
+          type="email"
+          value={formData.email}
           onChange={handleChange}
-          className="w-full mb-3 p-2 border border-gray-300 rounded"
-          required
+          className="w-full p-2 border rounded"
         />
         <input
-          type="password"
           name="password"
           placeholder="Password"
-          value={form.password}
+          type="password"
+          value={formData.password}
           onChange={handleChange}
-          className="w-full mb-5 p-2 border border-gray-300 rounded"
-          required
+          className="w-full p-2 border rounded"
         />
-
         <button
           type="submit"
-          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+          className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700 transition"
         >
           Login
         </button>
 
-        {message && (
-          <p className="mt-4 text-center text-sm text-gray-700">{message}</p>
-        )}
+        {message && <p className="text-center mt-2">{message}</p>}
       </form>
     </div>
   );
