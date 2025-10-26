@@ -19,10 +19,10 @@ export default function Register() {
       });
 
       const data = await res.json();
-      if (res.ok) setMessage("✅ Registered successfully!");
-      else setMessage(`❌ ${data.error || "Registration failed"}`);
+      if (res.ok) setMessage("Registered successfully!");
+      else setMessage(`${data.error || "Registration failed"}`);
     } catch (err) {
-      setMessage("❌ Network error");
+      setMessage("Network error");
     }
   };
 
