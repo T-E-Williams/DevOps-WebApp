@@ -37,7 +37,7 @@ export default function Login() {
       {/* Navbar */}
       <header className="w-full bg-white shadow-md py-4 px-6 flex justify-between items-center">
   <Link to="/" className="text-2xl font-bold text-gray-800 hover:underline">
-    DevOps WebApp
+    DevOps
   </Link>
         <div className="flex gap-4">
           <Link
