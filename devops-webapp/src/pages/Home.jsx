@@ -1,19 +1,37 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+// src/pages/Home.jsx
 
-function Home() {
-  const navigate = useNavigate()
+import { Link } from "react-router-dom";
 
+export default function Home() {
   return (
-    <div className="flex flex-col justify-center items-center h-screen text-center">
-      <h1 className="text-6xl font-bold text-black-600 mb-4">DevOps</h1>
-      <button type="submit"
-        onClick={() => navigate('/about')}
-        className="px-6 py-2 bg-black-600 text-black hover:cursor-pointer rounded-lg hover:bg-black-700 transition">
-        Go to About Page
-      </button>
-    </div>
-  )
-}
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Navbar */}
+      <header className="w-full bg-white shadow-md py-4 px-6 flex justify-between items-center">
+        <h1 className="text-2xl font-bold text-gray-800">DevOps WebApp</h1>
 
-export default Home
+        {/* Login button top-left or right */}
+        <div className="flex gap-4">
+          <Link
+            to="/login"
+            className="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-semibold transition"
+          >
+            Login
+          </Link>
+          <Link
+            to="/register"
+            className="text-blue-600 border border-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg font-semibold transition"
+          >
+            Register
+          </Link>
+        </div>
+      </header>
+
+      {/* Main content */}
+      <main className="flex flex-1 items-center justify-center">
+        <h2 className="text-4xl font-semibold text-gray-700">
+          Welcome to the DevOps Dashboard
+        </h2>
+      </main>
+    </div>
+  );
+}
