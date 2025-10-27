@@ -7,7 +7,9 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Navbar */}
       <header className="w-full bg-white shadow-md py-4 px-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-800">DevOps WebApp</h1>
+  <Link to="/" className="text-2xl font-bold text-gray-800 hover:underline">
+    DevOps WebApp
+  </Link>
 
         {/* Login button top-left or right */}
         <div className="flex gap-4">
