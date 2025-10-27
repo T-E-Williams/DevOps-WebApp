@@ -20,13 +20,13 @@ export default function Login() {
 
       const data = await res.json();
       if (res.ok) {
-        localStorage.setItem("token", data.token); // store JWT
-        setMessage("✅ Login successful!");
+        localStorage.setItem("token", data.token);
+        setMessage("Login successful!");
       } else {
-        setMessage(`❌ ${data.error || "Login failed"}`);
+        setMessage(`${data.error || "Login failed"}`);
       }
     } catch (err) {
-      setMessage("❌ Network error");
+      setMessage("Network error");
     }
   };
 
